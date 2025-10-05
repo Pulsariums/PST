@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PST.Views.Pages.OcrSettingsPage">
+	<ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="1">
+		<StackPanel Spacing="15">
+			<TextBlock Text="OCR Ayarları" FontSize="16" FontWeight="Bold"/>
+			<TextBlock Text="Metin tanıma ayarları" FontSize="11" Foreground="#FFCCCCCC"/>
+
+			<!-- OCR ayar içeriği buraya gelecek -->
+			<Border Classes="card">
+				<TextBlock Text="OCR ayarları yakında eklenecek..." Padding="10"/>
+			</Border>
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>

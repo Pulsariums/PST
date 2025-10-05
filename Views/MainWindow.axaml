@@ -6,27 +6,42 @@
         MinWidth="300" MinHeight="400"
         WindowStartupLocation="CenterScreen"
         CanResize="True"
-		
-		ExtendClientAreaToDecorationsHint="True"
-		WindowState="Normal">
+        ExtendClientAreaToDecorationsHint="True"
+        WindowState="Normal">
 
 	<Window.Styles>
+		<!-- Windows Titlebar rengi ile uyumlu gri tema -->
+		<Style Selector="Window">
+			<Setter Property="Background" Value="#FF2D2D30"/>
+			<Setter Property="FontFamily" Value="Segoe UI"/>
+		</Style>
 
-
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+		</Style>
 
 		<Style Selector="Border.sidebar">
 			<Setter Property="Background" Value="#FF252526"/>
 			<Setter Property="BorderThickness" Value="0,0,1,0"/>
 			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
 		</Style>
+		<Style Selector="Border.grid">
+			<Setter Property="Background" Value="#FF252526"/>
+			<Setter Property="BorderThickness" Value="0,0,0,1"/>
+			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
+		</Style>
 
 		<!-- Sidebar Buton Stilleri -->
 		<Style Selector="Button.sidebar-button">
 			<Setter Property="Background" Value="Transparent"/>
-			<Setter Property="BorderThickness" Value="5"/>
-			<Setter Property="Padding" Value="8,8"/>
+			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="Margin" Value="0,0,0,3"/>
+			<Setter Property="Padding" Value="4,5,4,4"/>
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
 			<Setter Property="Foreground" Value="#FFCCCCCC"/>
+			<Setter Property="Width" Value="32"/>
+			<Setter Property="Height" Value="32"/>
 			<Setter Property="Cursor" Value="Hand"/>
 			<Setter Property="FontSize" Value="11"/>
 		</Style>
@@ -99,72 +114,76 @@
 			<Setter Property="BorderThickness" Value="2"/>
 			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
 			<Setter Property="CornerRadius" Value="4"/>
-			<Setter Property="Padding" Value="12"/>
+			<Setter Property="Padding" Value="10,10,10,10"/>
 		</Style>
 	</Window.Styles>
-	
-	
 
 	<Grid Background="#FF2D2D30">
+		<!-- ANA GRID SATIR TANIMLARI -->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<!-- Sürüklenebilir bölge - TÜM PENCERENİN ÜSTÜ -->
+			<RowDefinition Height="*"/>
+			<!-- Ana içerik (sidebar + içerik alanı) -->
+		</Grid.RowDefinitions>
 
-		
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="60"/>
+			<ColumnDefinition Width="50"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-		
+
+		<!-- SÜRÜKLENEBİLİR BÖLGE - TÜM PENCERENİN ÜSTÜNDE -->
+		<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                Background="#10000000" PointerPressed="TitleBar_PointerPressed" Classes="grid" >
 			
-			
-		
+			<TextBlock Text="PST - Pulsar's Translator"
+                       Foreground="#60FFFFFF" FontSize="10"
+                       VerticalAlignment="Center" Margin="10,0"/>
+		</Border>
 
 		<!-- SOL SIDEBAR - Kompakt Sekmeler -->
-		<Border Grid.Column="0" Classes="sidebar">
+		<Border Grid.Row="1" Grid.Column="0" Classes="sidebar">
 			<Grid>
-				
-				
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*"/>
-					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="32"/>
 				</Grid.RowDefinitions>
 
 				<!-- Üst Sekmeler -->
-				<StackPanel Grid.Row="0" Margin="8,20,8,8" Spacing="1">
-					
-
+				<StackPanel Grid.Row="0" Margin="8,8,8,8" Spacing="1" >
 					<!-- Sekmeler  -->
-					<Button Classes="sidebar-button" ToolTip.Tip="Ana Sayfa">
+					<Button Classes="sidebar-button" ToolTip.Tip="Ana Sayfa" Click="OnHomePageClicked">
 						<Border>
-							<Image Source="avares://PST/Assets/Icons/home.png" Width="16" Height="16"/>
+							<Image Source="avares://PST/Assets/Icons/home.png" Width="24" Height="24"/>
 						</Border>
 					</Button>
-					<Button Classes="sidebar-button" ToolTip.Tip="OCR Ayarları">
+					<Button Classes="sidebar-button" ToolTip.Tip="OCR Ayarları" Click="OnOcrSettingsClicked">
 						<Border>
-							<Image Source="avares://PST/Assets/Icons/square-dashed-mouse-pointer.png" Width="16" Height="16"/>
+							<Image Source="avares://PST/Assets/Icons/square-dashed-mouse-pointer.png" Width="24" Height="24"/>
 						</Border>
 					</Button>
-					<Button Classes="sidebar-button" ToolTip.Tip="Focus Ayarları">
+					<Button Classes="sidebar-button" ToolTip.Tip="Focus Ayarları" Click="OnFocusSettingsClicked">
 						<Border>
-							<Image Source="avares://PST/Assets/Icons/monitor-cog.png" Width="16" Height="16"/>
+							<Image Source="avares://PST/Assets/Icons/monitor-cog.png" Width="24" Height="24"/>
 						</Border>
 					</Button>
-					<Button Classes="sidebar-button" ToolTip.Tip="Çeviri Ayarları">
+					<Button Classes="sidebar-button" ToolTip.Tip="Çeviri Ayarları" Click="OnTranslationSettingsClicked">
 						<Border>
-							<Image Source="avares://PST/Assets/Icons/languages.png" Width="16" Height="16"/>
+							<Image Source="avares://PST/Assets/Icons/languages.png" Width="24" Height="24"/>
 						</Border>
 					</Button>
-					<Button Classes="sidebar-button" ToolTip.Tip="Çevrilmiş Görüntü Ayarları">
+					<Button Classes="sidebar-button" ToolTip.Tip="Çevrilmiş Görüntü Ayarları" Click="OnDisplaySettingsClicked">
 						<Border>
-							<Image Source="avares://PST/Assets/Icons/monitor-down.png" Width="16" Height="16"/>
+							<Image Source="avares://PST/Assets/Icons/monitor-down.png" Width="24" Height="24"/>
 						</Border>
 					</Button>
 				</StackPanel>
 
 				<!-- Alt Kısım - Program Ayarları -->
 				<StackPanel Grid.Row="1" Margin="8,8,8,8" Spacing="1" VerticalAlignment="Bottom">
-					<Button Classes="sidebar-button" ToolTip.Tip="Genel ayarlar">
-
+					<Button Classes="sidebar-button" ToolTip.Tip="Genel ayarlar" Click="OnGeneralSettingsClicked">
 						<Border>
-							<Image Source="avares://PST/Assets/Icons/settings.png" Width="16" Height="16"/>
+							<Image Source="avares://PST/Assets/Icons/settings.png" Width="24" Height="24"/>
 						</Border>
 					</Button>
 				</StackPanel>
@@ -172,99 +191,9 @@
 		</Border>
 
 		<!-- SAĞ İÇERİK ALANI - Ana Sayfa -->
-		<Grid Grid.Column="1" Background="#FF2D2D30">
-			<ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="15">
-				<StackPanel Spacing="15">
-					<!-- Sürüklenebilir Başlık Çubuğu -->
-					<Border Height="50" VerticalAlignment="Top" Background="Transparent"
-							PointerPressed="TitleBar_PointerPressed" Margin="-30">
-						<Grid>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="70"/>
-								<ColumnDefinition Width="*"/>
-							</Grid.ColumnDefinitions>
-							<!-- Sol taraf (sidebar üstü) sürüklenemez, bu yüzden buraya bir Border koyup IsHitTestVisible'ı false yapıyoruz -->
-							<Border Grid.Column="0" Background="Transparent" IsHitTestVisible="False"/>
-							<!-- Sağ taraf (içerik alanı üstü) sürüklenebilir -->
-							<Border Grid.Column="1" Background="Transparent"/>
-						</Grid>
-					</Border>
-
-					<!-- BAŞLIK -->
-					<StackPanel>
-						<TextBlock Text="OCR Çeviri Aracı" FontSize="12" Foreground="#FFCCCCCC" Margin="0,2,0,0"/>
-					</StackPanel>
-
-					<!-- PRESET SEÇME -->
-					<Border Classes="card">
-						<StackPanel Spacing="2">
-							<TextBlock Text="Preset" FontSize="12" FontWeight="SemiBold"/>
-
-							<ComboBox SelectedIndex="0" FontSize="11">
-								<ComboBoxItem>Hızlı OCR</ComboBoxItem>
-								<ComboBoxItem>Kaliteli OCR</ComboBoxItem>
-								<ComboBoxItem>Özel</ComboBoxItem>
-							</ComboBox>
-						</StackPanel>
-					</Border>
-
-					<!-- OCR BAŞLATMA -->
-					<Border Classes="card">
-						<StackPanel Spacing="12" HorizontalAlignment="Center">
-							<Button Content="🎯 START OCR" Classes="primary"
-                                    FontSize="13" Padding="30,10" HorizontalAlignment="Center"/>
-
-							<TextBlock Text="Ekran bölgesi seçerek OCR başlat"
-                                       FontSize="10" Foreground="#FFCCCCCC" TextAlignment="Center"
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
-						</StackPanel>
-					</Border>
-
-					<!-- ÇEVİRİ SONUÇLARI -->
-					<StackPanel Spacing="10">
-						<!-- Orijinal Metin -->
-						<Border Classes="card">
-							<StackPanel Spacing="8">
-								<TextBlock Text="Orijinal" FontSize="12" FontWeight="SemiBold"/>
-								<Border Background="#FF1E1E1E" CornerRadius="4" Padding="8" Height="80">
-									<ScrollViewer VerticalScrollBarVisibility="Auto">
-										<TextBlock Text="OCR metni burada..."
-                                                   Foreground="#FFCCCCCC" FontSize="11" TextWrapping="Wrap"/>
-									</ScrollViewer>
-								</Border>
-								<StackPanel Orientation="Horizontal" Spacing="6">
-									<Button Content="Kopyala" Classes="secondary" Padding="10,6"/>
-									<Button Content="Temizle" Classes="secondary" Padding="10,6"/>
-								</StackPanel>
-							</StackPanel>
-						</Border>
-
-						<!-- Çevrilen Metin -->
-						<Border Classes="card">
-							<StackPanel Spacing="8">
-								<TextBlock Text="Çeviri" FontSize="12" FontWeight="SemiBold"/>
-								<Border Background="#FF1E1E1E" CornerRadius="4" Padding="8" Height="80">
-									<ScrollViewer VerticalScrollBarVisibility="Auto">
-										<TextBlock Text="Çeviri sonucu burada..."
-                                                   Foreground="#FFCCCCCC" FontSize="11" TextWrapping="Wrap"/>
-									</ScrollViewer>
-								</Border>
-								<StackPanel Orientation="Horizontal" Spacing="6">
-									<Button Content="Kopyala" Classes="secondary" Padding="10,6"/>
-									<Button Content="Ses" Classes="secondary" Padding="10,6"/>
-								</StackPanel>
-							</StackPanel>
-						</Border>
-					</StackPanel>
-
-					<!-- DURUM BİLGİSİ -->
-					<Border Classes="card" Background="#FF1E1E1E" Padding="8">
-						<StackPanel Orientation="Horizontal" Spacing="6">
-							<TextBlock Text="●" Foreground="#FF00FF00" FontSize="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Hazır" FontSize="10" Foreground="#FFCCCCCC"/>
-						</StackPanel>
-					</Border>
-				</StackPanel>
+		<Grid Grid.Row="1" Grid.Column="1" Background="#FF2D2D30" x:Name="ContentArea">
+			<ScrollViewer VerticalScrollBarVisibility="Auto" Padding="5">
+				<ContentControl x:Name="MainContentControl"/>
 			</ScrollViewer>
 		</Grid>
 	</Grid>

@@ -1,0 +1,77 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PST.Views.Pages.FocusSettingsPage">
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<StackPanel Spacing="20" Margin="10">
+
+			<!-- BAŞLIK -->
+			<TextBlock Text="📋 Bölge Yönetimi" FontSize="18" FontWeight="Bold"/>
+			<TextBlock Text="Ekranın farklı bölgelerinden otomatik metin yakalama"
+                       FontSize="11" Foreground="Gray"/>
+
+			<!-- BÖLGE EKLE BUTONU -->
+			<Border BorderBrush="#FF444444" BorderThickness="1" CornerRadius="5" Padding="15">
+				<StackPanel Spacing="15">
+					<TextBlock Text="Yeni Bölge Ekle" FontSize="14" FontWeight="SemiBold"/>
+					<Button x:Name="AddRegionButton"
+                            Content="➕ Yeni Bölge Ekle"
+                            HorizontalAlignment="Left"
+                            Width="150"/>
+				</StackPanel>
+			</Border>
+
+			<!-- BÖLGE LİSTESİ -->
+			<Border BorderBrush="#FF444444" BorderThickness="1" CornerRadius="5" Padding="15">
+				<StackPanel Spacing="15">
+					<TextBlock Text="Kayıtlı Bölgeler" FontSize="14" FontWeight="SemiBold"/>
+
+					<!-- Bölgeler buraya manuel eklenecek -->
+					<StackPanel x:Name="RegionsContainer" Spacing="10"/>
+
+					<TextBlock x:Name="NoRegionsText"
+                               Text="Henüz bölge eklenmemiş. Yukarıdaki butondan ekleyin."
+                               FontStyle="Italic"
+                               HorizontalAlignment="Center"
+                               Foreground="Gray"/>
+				</StackPanel>
+			</Border>
+
+			<!-- IMPORT/EXPORT -->
+			<Border BorderBrush="#FF444444" BorderThickness="1" CornerRadius="5" Padding="15">
+				<StackPanel Spacing="15">
+					<TextBlock Text="🔄 Ayarları Yönet" FontSize="14" FontWeight="SemiBold"/>
+					<StackPanel Orientation="Horizontal" Spacing="10">
+						<Button x:Name="ExportButton"
+                                Content="📤 Dışa Aktar"
+                                Width="100"/>
+						<Button x:Name="ImportButton"
+                                Content="📥 İçe Aktar"
+                                Width="100"/>
+					</StackPanel>
+				</StackPanel>
+			</Border>
+
+			<!-- OTOMATİK YAKALAMA AYARLARI -->
+			<Border BorderBrush="#FF444444" BorderThickness="1" CornerRadius="5" Padding="15">
+				<StackPanel Spacing="15">
+					<TextBlock Text="⏱️ Otomatik Yakalama Ayarları" FontSize="14" FontWeight="SemiBold"/>
+
+					<CheckBox x:Name="AutoCaptureCheckBox"
+                              Content="Program başlangıcında otomatik yakalamayı başlat"/>
+
+					<StackPanel Orientation="Horizontal" Spacing="10">
+						<TextBlock Text="Yakalama aralığı (ms):" VerticalAlignment="Center"/>
+						<TextBox x:Name="CaptureIntervalTextBox"
+                                 Text="5000"
+                                 Width="80"/>
+					</StackPanel>
+
+					<Button x:Name="SaveSettingsButton"
+                            Content="💾 Ayarları Kaydet"
+                            Width="120"/>
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>

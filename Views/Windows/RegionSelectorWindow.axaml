@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="PST.Views.Windows.RegionSelectorWindow"
+        Title="Bölge Seçici"
+        Width="400"
+        Height="300"
+        MinWidth="100"
+        MinHeight="100"
+        CanResize="True"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent">
+
+	<Grid Background="Transparent">
+		<Border BorderBrush="Red" BorderThickness="2" Background="#20FF0000">
+			<StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Spacing="10" Orientation="Horizontal">
+				<Button Content="✅ Kaydet" Click="OnSaveClick" Background="Green" Foreground="White"/>
+				<Button Content="❌ İptal" Click="OnCancelClick" Background="Red" Foreground="White"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>

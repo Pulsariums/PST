@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PST.Views.Pages.TranslationSettingsPage">
+	<ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="1">
+		<StackPanel Spacing="15">
+			<TextBlock Text="Çeviri Ayarları" FontSize="16" FontWeight="Bold"/>
+			<TextBlock Text="Çeviri motoru ve dil ayarları" FontSize="11" Foreground="#FFCCCCCC"/>
+
+			<Border Classes="card">
+				<StackPanel Spacing="5">
+					<TextBlock Text="Çeviri Motoru" FontSize="12" FontWeight="SemiBold"/>
+					<ComboBox SelectedIndex="0">
+						<ComboBoxItem>Google Translate</ComboBoxItem>
+						<ComboBoxItem>DeepL</ComboBoxItem>
+						<ComboBoxItem>Yandex Translate</ComboBoxItem>
+					</ComboBox>
+				</StackPanel>
+			</Border>
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>

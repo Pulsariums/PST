@@ -1,0 +1,58 @@
+
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PST.Views.Pages.HomePage">
+	<ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="1">
+		<StackPanel Spacing="15">
+			<!-- BAŞLIK -->
+			<StackPanel>
+				<TextBlock Text="PST - OCR Çeviri" FontSize="18" FontWeight="SemiBold"/>
+				<TextBlock Text="Ekrandaki metni seç → Çevir → Görüntüle" FontSize="11" Foreground="#FFCCCCCC"/>
+			</StackPanel>
+
+			<!-- HIZLI BAŞLATMA -->
+			<Border Classes="card">
+				<StackPanel Spacing="12">
+					<Button Content="🎯 EKRAN BÖLGESİ SEÇ" Classes="primary"
+                            FontSize="13" Click="OnSelectRegionClicked"/>
+
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+						<ComboBox x:Name="LanguageCombo" SelectedIndex="0" FontSize="11" Width="120">
+							<ComboBoxItem>İngilizce → Türkçe</ComboBoxItem>
+							<ComboBoxItem>Türkçe → İngilizce</ComboBoxItem>
+							<ComboBoxItem>Otomatik Tespit</ComboBoxItem>
+						</ComboBox>
+
+						<CheckBox x:Name="AutoTranslateCheck" Content="Otomatik çevir" IsChecked="True"/>
+					</StackPanel>
+				</StackPanel>
+			</Border>
+
+			<!-- HIZLI TEST BUTONU -->
+			<Border Classes="card">
+				<StackPanel Spacing="10">
+					<TextBlock Text="Hızlı Test" FontSize="12" FontWeight="SemiBold"/>
+					<Button Content="🚀 Hızlı Test Çalıştır" Click="OnQuickTestClicked" Classes="primary"/>
+					<TextBlock Text="Tüm sistemleri test et" FontSize="10" Foreground="#FFCCCCCC"/>
+				</StackPanel>
+			</Border>
+
+			<!-- DURUM -->
+			<Border Classes="card" Background="#FF1E1E1E" Padding="8">
+				<StackPanel Orientation="Horizontal" Spacing="6">
+					<TextBlock x:Name="StatusIndicator" Text="●" Foreground="#FF00FF00" FontSize="10"/>
+					<TextBlock x:Name="StatusText" Text="Hazır - Ekran bölgesi seçin" FontSize="10"/>
+				</StackPanel>
+			</Border>
+
+			<!-- HIZLI İŞLEM GEÇMİŞİ -->
+			<Border Classes="card">
+				<StackPanel Spacing="8">
+					<TextBlock Text="Son İşlemler" FontSize="12" FontWeight="SemiBold"/>
+					<Button Content="📋 Son Çeviriyi Kopyala" Classes="secondary" Click="OnCopyLastClicked"/>
+					<Button Content="🔄 Aynı Bölgeyi Tekrar Tara" Classes="secondary" Click="OnRescanClicked"/>
+				</StackPanel>
+			</Border>
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>

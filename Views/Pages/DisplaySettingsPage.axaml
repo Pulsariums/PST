@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PST.Views.Pages.DisplaySettingsPage">
+	<ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="1">
+		<StackPanel Spacing="15">
+			<TextBlock Text="Çeviri Görüntüleme Ayarları" FontSize="16" FontWeight="Bold"/>
+
+			<!-- ARKA PLAN AYARLARI -->
+			<Border Classes="card">
+				<StackPanel Spacing="10">
+					<TextBlock Text="Arka Plan" FontSize="12" FontWeight="SemiBold"/>
+
+					<ComboBox x:Name="BackgroundCombo" SelectedIndex="0">
+						<ComboBoxItem>Tam Şeffaf</ComboBoxItem>
+						<ComboBoxItem>Yarı Şeffaf Siyah</ComboBoxItem>
+						<ComboBoxItem>Yarı Şeffaf Beyaz</ComboBoxItem>
+						<ComboBoxItem>Adaptif (Otomatik)</ComboBoxItem>
+					</ComboBox>
+
+					<Slider x:Name="OpacitySlider" Minimum="0" Maximum="100" Value="80"/>
+					<TextBlock Text="{Binding #OpacitySlider.Value, StringFormat='Şeffaflık: {0}%'}"
+                               FontSize="10" Foreground="#FFCCCCCC"/>
+				</StackPanel>
+			</Border>
+
+			<!-- METİN AYARLARI -->
+			<Border Classes="card">
+				<StackPanel Spacing="1">
+					<TextBlock Text="Metin Görünümü" FontSize="12" FontWeight="SemiBold"/>
+
+					<StackPanel Orientation="Horizontal" Spacing="10">
+						<Button x:Name="WhiteTextBtn" Content="Beyaz" Click="OnTextColorClicked"/>
+						<Button x:Name="BlackTextBtn" Content="Siyah" Click="OnTextColorClicked"/>
+						<Button x:Name="AutoTextBtn" Content="Otomatik" Click="OnTextColorClicked"/>
+					</StackPanel>
+
+					<Slider x:Name="FontSizeSlider" Minimum="12" Maximum="36" Value="16"/>
+					<TextBlock Text="{Binding #FontSizeSlider.Value, StringFormat='Yazı Boyutu: {0}px'}"
+                               FontSize="10" Foreground="#FFCCCCCC"/>
+				</StackPanel>
+			</Border>
+
+			<!-- ÖNİZLEME -->
+			<Border Classes="card">
+				<StackPanel Spacing="10">
+					<TextBlock Text="Önizleme" FontSize="12" FontWeight="SemiBold"/>
+					<Button Content="🔍 Önizleme Göster" Click="OnPreviewClicked" Classes="secondary"/>
+				</StackPanel>
+			</Border>
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>
