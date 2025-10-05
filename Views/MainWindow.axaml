@@ -1,0 +1,271 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="PST.Views.MainWindow"
+        Title="PST - Pulsar's Translator"
+        Width="400" Height="500"
+        MinWidth="300" MinHeight="400"
+        WindowStartupLocation="CenterScreen"
+        CanResize="True"
+		
+		ExtendClientAreaToDecorationsHint="True"
+		WindowState="Normal">
+
+	<Window.Styles>
+
+
+
+		<Style Selector="Border.sidebar">
+			<Setter Property="Background" Value="#FF252526"/>
+			<Setter Property="BorderThickness" Value="0,0,1,0"/>
+			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
+		</Style>
+
+		<!-- Sidebar Buton Stilleri -->
+		<Style Selector="Button.sidebar-button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="5"/>
+			<Setter Property="Padding" Value="8,8"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="Foreground" Value="#FFCCCCCC"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="FontSize" Value="11"/>
+		</Style>
+
+		<Style Selector="Button.sidebar-button:pointerover">
+			<Setter Property="Background" Value="#FF2A2A2C"/>
+		</Style>
+
+		<Style Selector="Button.sidebar-button:selected">
+			<Setter Property="Background" Value="#FF007ACC"/>
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+		</Style>
+
+		<!-- Ana Buton Stilleri -->
+		<Style Selector="Button.primary">
+			<Setter Property="Background" Value="#FF007ACC"/>
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="20,12"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+		</Style>
+
+		<Style Selector="Button.primary:pointerover">
+			<Setter Property="Background" Value="#FF1177BB"/>
+		</Style>
+
+		<!-- İkincil Buton Stilleri -->
+		<Style Selector="Button.secondary">
+			<Setter Property="Background" Value="#FF3C3C3C"/>
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="#FF555555"/>
+			<Setter Property="Padding" Value="15,8"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="FontSize" Value="11"/>
+		</Style>
+
+		<!-- Input Stilleri -->
+		<Style Selector="TextBox">
+			<Setter Property="Background" Value="#FF1E1E1E"/>
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="#FF444444"/>
+			<Setter Property="Padding" Value="8"/>
+			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+
+		<Style Selector="TextBox:focus">
+			<Setter Property="BorderBrush" Value="#FF007ACC"/>
+		</Style>
+
+		<Style Selector="ComboBox">
+			<Setter Property="Background" Value="#FF1E1E1E"/>
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="#FF444444"/>
+			<Setter Property="Padding" Value="8"/>
+			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+
+		<!-- Kart Stilleri -->
+		<Style Selector="Border.card">
+			<Setter Property="Background" Value="#FF252526"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
+			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="Padding" Value="12"/>
+		</Style>
+	</Window.Styles>
+	
+	
+
+	<Grid Background="#FF2D2D30">
+
+		
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="60"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		
+			
+			
+		
+
+		<!-- SOL SIDEBAR - Kompakt Sekmeler -->
+		<Border Grid.Column="0" Classes="sidebar">
+			<Grid>
+				
+				
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<!-- Üst Sekmeler -->
+				<StackPanel Grid.Row="0" Margin="8,20,8,8" Spacing="1">
+					
+
+					<!-- Sekmeler  -->
+					<Button Classes="sidebar-button" ToolTip.Tip="Ana Sayfa">
+						<Border>
+							<Image Source="avares://PST/Assets/Icons/home.png" Width="16" Height="16"/>
+						</Border>
+					</Button>
+					<Button Classes="sidebar-button" ToolTip.Tip="OCR Ayarları">
+						<Border>
+							<Image Source="avares://PST/Assets/Icons/square-dashed-mouse-pointer.png" Width="16" Height="16"/>
+						</Border>
+					</Button>
+					<Button Classes="sidebar-button" ToolTip.Tip="Focus Ayarları">
+						<Border>
+							<Image Source="avares://PST/Assets/Icons/monitor-cog.png" Width="16" Height="16"/>
+						</Border>
+					</Button>
+					<Button Classes="sidebar-button" ToolTip.Tip="Çeviri Ayarları">
+						<Border>
+							<Image Source="avares://PST/Assets/Icons/languages.png" Width="16" Height="16"/>
+						</Border>
+					</Button>
+					<Button Classes="sidebar-button" ToolTip.Tip="Çevrilmiş Görüntü Ayarları">
+						<Border>
+							<Image Source="avares://PST/Assets/Icons/monitor-down.png" Width="16" Height="16"/>
+						</Border>
+					</Button>
+				</StackPanel>
+
+				<!-- Alt Kısım - Program Ayarları -->
+				<StackPanel Grid.Row="1" Margin="8,8,8,8" Spacing="1" VerticalAlignment="Bottom">
+					<Button Classes="sidebar-button" ToolTip.Tip="Genel ayarlar">
+
+						<Border>
+							<Image Source="avares://PST/Assets/Icons/settings.png" Width="16" Height="16"/>
+						</Border>
+					</Button>
+				</StackPanel>
+			</Grid>
+		</Border>
+
+		<!-- SAĞ İÇERİK ALANI - Ana Sayfa -->
+		<Grid Grid.Column="1" Background="#FF2D2D30">
+			<ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="15">
+				<StackPanel Spacing="15">
+					<!-- Sürüklenebilir Başlık Çubuğu -->
+					<Border Height="50" VerticalAlignment="Top" Background="Transparent"
+							PointerPressed="TitleBar_PointerPressed" Margin="-30">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="70"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<!-- Sol taraf (sidebar üstü) sürüklenemez, bu yüzden buraya bir Border koyup IsHitTestVisible'ı false yapıyoruz -->
+							<Border Grid.Column="0" Background="Transparent" IsHitTestVisible="False"/>
+							<!-- Sağ taraf (içerik alanı üstü) sürüklenebilir -->
+							<Border Grid.Column="1" Background="Transparent"/>
+						</Grid>
+					</Border>
+
+					<!-- BAŞLIK -->
+					<StackPanel>
+						<TextBlock Text="OCR Çeviri Aracı" FontSize="12" Foreground="#FFCCCCCC" Margin="0,2,0,0"/>
+					</StackPanel>
+
+					<!-- PRESET SEÇME -->
+					<Border Classes="card">
+						<StackPanel Spacing="2">
+							<TextBlock Text="Preset" FontSize="12" FontWeight="SemiBold"/>
+
+							<ComboBox SelectedIndex="0" FontSize="11">
+								<ComboBoxItem>Hızlı OCR</ComboBoxItem>
+								<ComboBoxItem>Kaliteli OCR</ComboBoxItem>
+								<ComboBoxItem>Özel</ComboBoxItem>
+							</ComboBox>
+						</StackPanel>
+					</Border>
+
+					<!-- OCR BAŞLATMA -->
+					<Border Classes="card">
+						<StackPanel Spacing="12" HorizontalAlignment="Center">
+							<Button Content="🎯 START OCR" Classes="primary"
+                                    FontSize="13" Padding="30,10" HorizontalAlignment="Center"/>
+
+							<TextBlock Text="Ekran bölgesi seçerek OCR başlat"
+                                       FontSize="10" Foreground="#FFCCCCCC" TextAlignment="Center"
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<!-- ÇEVİRİ SONUÇLARI -->
+					<StackPanel Spacing="10">
+						<!-- Orijinal Metin -->
+						<Border Classes="card">
+							<StackPanel Spacing="8">
+								<TextBlock Text="Orijinal" FontSize="12" FontWeight="SemiBold"/>
+								<Border Background="#FF1E1E1E" CornerRadius="4" Padding="8" Height="80">
+									<ScrollViewer VerticalScrollBarVisibility="Auto">
+										<TextBlock Text="OCR metni burada..."
+                                                   Foreground="#FFCCCCCC" FontSize="11" TextWrapping="Wrap"/>
+									</ScrollViewer>
+								</Border>
+								<StackPanel Orientation="Horizontal" Spacing="6">
+									<Button Content="Kopyala" Classes="secondary" Padding="10,6"/>
+									<Button Content="Temizle" Classes="secondary" Padding="10,6"/>
+								</StackPanel>
+							</StackPanel>
+						</Border>
+
+						<!-- Çevrilen Metin -->
+						<Border Classes="card">
+							<StackPanel Spacing="8">
+								<TextBlock Text="Çeviri" FontSize="12" FontWeight="SemiBold"/>
+								<Border Background="#FF1E1E1E" CornerRadius="4" Padding="8" Height="80">
+									<ScrollViewer VerticalScrollBarVisibility="Auto">
+										<TextBlock Text="Çeviri sonucu burada..."
+                                                   Foreground="#FFCCCCCC" FontSize="11" TextWrapping="Wrap"/>
+									</ScrollViewer>
+								</Border>
+								<StackPanel Orientation="Horizontal" Spacing="6">
+									<Button Content="Kopyala" Classes="secondary" Padding="10,6"/>
+									<Button Content="Ses" Classes="secondary" Padding="10,6"/>
+								</StackPanel>
+							</StackPanel>
+						</Border>
+					</StackPanel>
+
+					<!-- DURUM BİLGİSİ -->
+					<Border Classes="card" Background="#FF1E1E1E" Padding="8">
+						<StackPanel Orientation="Horizontal" Spacing="6">
+							<TextBlock Text="●" Foreground="#FF00FF00" FontSize="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Hazır" FontSize="10" Foreground="#FFCCCCCC"/>
+						</StackPanel>
+					</Border>
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
+	</Grid>
+</Window>
